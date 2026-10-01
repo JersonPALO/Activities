@@ -1,133 +1,35 @@
-import React, { useState } from "react";
-import { View,Text,TextInput,TouchableOpacity,FlatList,StyleSheet, } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import HomeScreen from "./src/screens/HomeScreen";
+import RecipeListScreen from "./src/screens/RecipeListScreen";
+import RecipeDetailsScreen from "./src/screens/RecipeDetailsScreen";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [item, setItem] = useState("");
-  const [groceryList, setGroceryList] = useState([]);
-
-  const addItem = () => {
-    if (item.trim() === "") return;
-
-    setGroceryList([
-      ...groceryList,
-      {
-        id: Date.now().toString(),
-        name: item,
-      },
-    ]);
-
-    setItem("");
-  };
-
-  const deleteItem = (id) => {
-    setGroceryList(groceryList.filter((listItem) => listItem.id !== id));
-  };
-
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Grocery List</Text>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: "Recipe Book" }}
+        />
 
-      <TextInput
-        style={styles.input}
-        placeholder="Enter grocery item"
-        value={item}
-        onChangeText={setItem}
-      />
+        <Stack.Screen
+          name="RecipeList"
+          component={RecipeListScreen}
+          options={{ title: "Recipes" }}
+        />
 
-      <TouchableOpacity style={styles.addButton} onPress={addItem}>
-        <Text style={styles.buttonText}>Add Item</Text>
-      </TouchableOpacity>
-
-      <FlatList
-        data={groceryList}
-        keyExtractor={(item) => item.id}
-        ListEmptyComponent={
-          <Text style={styles.empty}>No grocery items yet.</Text>
-        }
-        renderItem={({ item }) => (
-          <View style={styles.itemContainer}>
-            <Text style={styles.itemText}>{item.name}</Text>
-
-            <TouchableOpacity
-              style={styles.deleteButton}
-              onPress={() => deleteItem(item.id)}
-            >
-              <Text style={styles.deleteText}>Delete</Text>
-            </TouchableOpacity>
-          </View>
-        )}
-      />
-    </SafeAreaView>
+        <Stack.Screen
+          name="RecipeDetails"
+          component={RecipeDetailsScreen}
+          options={{ title: "Recipe Details" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    marginTop: 40,
-  },
-
-  title: {
-    fontSize: 28,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginBottom: 20,
-  },
-
-  input: {
-    borderWidth: 1,
-    borderColor: "#999",
-    borderRadius: 8,
-    padding: 12,
-    marginBottom: 12,
-  },
-
-  addButton: {
-    backgroundColor: "#2E86DE",
-    padding: 14,
-    borderRadius: 8,
-    marginBottom: 20,
-    alignItems: "center",
-  },
-
-  buttonText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-
-  itemContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: "#f2f2f2",
-    padding: 15,
-    borderRadius: 8,
-    marginBottom: 10,
-  },
-
-  itemText: {
-    fontSize: 18,
-  },
-
-  deleteButton: {
-    backgroundColor: "red",
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 6,
-  },
-
-  deleteText: {
-    color: "white",
-    fontWeight: "bold",
-  },
-
-  empty: {
-    textAlign: "center",
-    marginTop: 20,
-    color: "gray",
-    fontSize: 16,
-  },
-});
