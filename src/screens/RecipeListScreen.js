@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
+import { View, Text, FlatList, TouchableOpacity, } from "react-native";
+import { styles } from "../styles/globalStyles";
 
 const recipes = [
   {
@@ -53,20 +48,3 @@ export default function RecipeListScreen({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 15,
-  },
-  card: {
-    backgroundColor: "#E8F5E9",
-    padding: 15,
-    marginBottom: 15,
-    borderRadius: 10,
-  },
-  name: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-});
