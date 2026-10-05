@@ -1,50 +1,68 @@
 import React from "react";
-import { View, Text, FlatList, TouchableOpacity, } from "react-native";
-import { styles } from "../styles/globalStyles";
+import { View, Text, TouchableOpacity } from "react-native";
+
+import styles from "../globalStyles";
+
 
 const recipes = [
+
   {
-    id: "1",
+    id: 1,
+    name: "Pancakes",
+    price: "₱50",
+    description: "Fluffy pancakes with syrup."
+  },
+
+
+  {
+    id: 2,
     name: "Chicken Adobo",
-    time: "45 mins",
-    description: "A famous Filipino chicken dish.",
+    price: "₱120",
+    description: "Classic Filipino chicken dish."
   },
+
+
   {
-    id: "2",
-    name: "Pancit",
-    time: "30 mins",
-    description: "Stir-fried noodles with vegetables.",
-  },
-  {
-    id: "3",
-    name: "Sinigang",
-    time: "60 mins",
-    description: "A sour soup with pork and vegetables.",
-  },
+    id: 3,
+    name: "Spaghetti",
+    price: "₱80",
+    description: "Sweet Filipino-style spaghetti."
+  }
+
 ];
 
 export default function RecipeListScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <FlatList
-        data={recipes}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
+      <Text style={styles.title}>
+        Recipe List
+      </Text>
+      {
+        recipes.map((recipe)=> (
+
           <TouchableOpacity
+
+            key={recipe.id}
+
             style={styles.card}
-            onPress={() =>
-              navigation.navigate("RecipeDetails", {
-                name: item.name,
-                time: item.time,
-                description: item.description,
-              })
+
+            onPress={() => 
+              navigation.navigate(
+                "Details",
+                {
+                  name: recipe.name,
+                  price: recipe.price,
+                  description: recipe.description
+                }
+              )
             }
           >
-            <Text style={styles.name}>{item.name}</Text>
-            <Text>{item.time}</Text>
+            <Text style={styles.text}>
+              {recipe.name}
+            </Text>
           </TouchableOpacity>
-        )}
-      />
+        ))
+      }
     </View>
   );
 }

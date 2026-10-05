@@ -1,18 +1,39 @@
 import React from "react";
-import { View, Text, TouchableOpacity, } from "react-native";
-import { styles } from "../styles/globalStyles";
+import { View, Text, TouchableOpacity } from "react-native";
+
+import styles from "../globalStyles";
+
 
 export default function HomeScreen({ navigation }) {
+
   return (
+
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome to the Recipe Book!</Text>
+
+      <Text style={styles.title}>
+        Recipe Explorer
+      </Text>
+
+
+      <Text style={styles.text}>
+        Discover simple recipes!
+      </Text>
+
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate("RecipeList")}
+        onPress={() => navigation.navigate("Recipes")}
       >
-        <Text style={styles.buttonText}>View Recipes</Text>
+
+        <Text style={styles.buttonText}>
+          View Recipes
+        </Text>
+
       </TouchableOpacity>
+
+
     </View>
+
   );
+
 }

@@ -1,25 +1,31 @@
 import React from "react";
-import { View, Text, TouchableOpacity, } from "react-native";
-import { styles } from "../styles/globalStyles";
+import { View, Text, TouchableOpacity } from "react-native";
 
-export default function RecipeDetailsScreen({ navigation, route }) {
-  const { name, time, description } = route.params;
+import styles from "../globalStyles";
 
+export default function RecipeDetailsScreen({ route, navigation }) {
+  const { name, price, description } = route.params;
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{name}</Text>
-
-      <Text style={styles.subtitle}>Cooking Time</Text>
-      <Text>{time}</Text>
-
-      <Text style={styles.subtitle}>Description</Text>
-      <Text>{description}</Text>
-
+      <Text style={styles.title}>
+        Recipe Details
+      </Text>
+      <Text style={styles.text}>
+        Name: {name}
+      </Text>
+      <Text style={styles.text}>
+        Price: {price}
+      </Text>
+      <Text style={styles.text}>
+        Description: {description}
+      </Text>
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.goBack()}
       >
-        <Text style={styles.buttonText}>Go Back</Text>
+        <Text style={styles.buttonText}>
+          Go Back
+        </Text>
       </TouchableOpacity>
     </View>
   );
