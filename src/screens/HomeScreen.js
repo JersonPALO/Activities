@@ -1,39 +1,29 @@
-import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import {
+    View,
+    Text,
+    TouchableOpacity
+} from "react-native";
 
-import styles from "../globalStyles";
-
-
-export default function HomeScreen({ navigation }) {
-
-  return (
-
-    <View style={styles.container}>
-
-      <Text style={styles.title}>
-        Recipe Explorer
-      </Text>
+import { GlobalStyles } from "../globalStyles";
 
 
-      <Text style={styles.text}>
-        Discover simple recipes!
-      </Text>
-
-
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate("Recipes")}
-      >
-
-        <Text style={styles.buttonText}>
-          View Recipes
-        </Text>
-
-      </TouchableOpacity>
-
-
-    </View>
-
-  );
-
+export default function HomeScreen({navigation}){
+    return(
+        <View style={GlobalStyles.container}>
+            <Text style={GlobalStyles.title}>
+                🎬 Movie Explorer
+            </Text>
+            <Text style={GlobalStyles.text}>
+                Discover popular movies
+            </Text>
+            <TouchableOpacity
+                style={GlobalStyles.button}
+                onPress={()=>navigation.navigate("MovieList")}
+            >
+                <Text style={GlobalStyles.buttonText}>
+                    View Movies
+                </Text>
+            </TouchableOpacity>
+        </View>
+    );
 }

@@ -1,36 +1,31 @@
-import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import HomeScreen from "./screens/HomeScreen";
-import RecipeListScreen from "./screens/RecipeListScreen";
-import RecipeDetailsScreen from "./screens/RecipeDetailsScreen";
+import HomeScreen from "./src/screens/HomeScreen";
+import MovieListScreen from "./src/screens/MovieListScreen";
+import MovieDetailsScreen from "./src/screens/MovieDetailsScreen";
+
 
 const Stack = createNativeStackNavigator();
+
 
 export default function App() {
   return (
     <NavigationContainer>
-
       <Stack.Navigator>
-
-        <Stack.Screen
+        <Stack.Screen 
           name="Home"
           component={HomeScreen}
         />
-
         <Stack.Screen
-          name="Recipes"
-          component={RecipeListScreen}
+          name="MovieList"
+          component={MovieListScreen}
         />
-
         <Stack.Screen
-          name="Details"
-          component={RecipeDetailsScreen}
+          name="MovieDetails"
+          component={MovieDetailsScreen}
         />
-
       </Stack.Navigator>
-
     </NavigationContainer>
   );
 }

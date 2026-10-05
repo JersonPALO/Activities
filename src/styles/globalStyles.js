@@ -1,57 +1,49 @@
 import { StyleSheet } from "react-native";
 
-const globalStyles = StyleSheet.create({
 
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 20,
-    backgroundColor: "#fff8f0",
-  },
+export const GlobalStyles = StyleSheet.create({
 
-
-  title: {
-    fontSize: 28,
-    fontWeight: "bold",
-    marginBottom: 20,
-    color: "#8B4513",
-  },
+    container:{
+        flex:1,
+        justifyContent:"center",
+        alignItems:"center",
+        padding:20
+    },
 
 
-  text: {
-    fontSize: 18,
-    marginBottom: 15,
-    textAlign: "center",
-  },
+    title:{
+        fontSize:28,
+        fontWeight:"bold",
+        marginBottom:20
+    },
 
 
-  button: {
-    backgroundColor: "#8B4513",
-    padding: 15,
-    borderRadius: 10,
-    marginTop: 10,
-    width: 200,
-  },
+    text:{
+        fontSize:18,
+        marginBottom:10
+    },
 
 
-  buttonText: {
-    color: "white",
-    textAlign: "center",
-    fontSize: 16,
-  },
+    button:{
+        backgroundColor:"#333",
+        padding:15,
+        borderRadius:10,
+        marginTop:10
+    },
 
 
-  card: {
-    backgroundColor: "white",
-    padding: 20,
-    marginVertical: 10,
-    width: "90%",
-    borderRadius: 10,
-    elevation: 3,
-  }
+    buttonText:{
+        color:"white",
+        fontSize:16
+    },
+
+
+    card:{
+        width:"90%",
+        padding:15,
+        margin:10,
+        backgroundColor:"#eee",
+        borderRadius:10
+    }
 
 });
-
-
-export default globalStyles;
